@@ -2,13 +2,14 @@ require 'sinatra'
 require 'rest_client'
 require 'json'
 
-DB = "#{ENV['https://app13659298.heroku:55Vha7nOQVFFOdgAQILo53qO@app13659298.heroku.cloudant.com']}/events"
+
 
 get '/' do
   'Hello, world'
 end
 	
-get "/events/:doc" do
+get '/events/:doc' do
+	DB = "#{ENV['https://app13659298.heroku:55Vha7nOQVFFOdgAQILo53qO@app13659298.heroku.cloudant.com']}/events"
 	doc = RestClient.get("#{DB}/#{params[:doc]}")
 	@result = JSON.parse(doc)
 	haml :doc_id
