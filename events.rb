@@ -9,7 +9,7 @@ get '/' do
 end
 	
 get '/events/:doc' do
-	DB = "#{ENV['https://app13659298.heroku:55Vha7nOQVFFOdgAQILo53qO@app13659298.heroku.cloudant.com']}/events"
+	DB = "#{ENV['CLOUDANT_URL']}/events"
 	doc = RestClient.get("#{DB}/#{params[:doc]}")
 	@result = JSON.parse(doc)
 	haml :doc_id
