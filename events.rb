@@ -2,14 +2,20 @@ require 'sinatra'
 require 'rest_client'
 require 'json'
 
-
+DB = "#{ENV['CLOUDANT_URL']}/events"
 
 get '/' do
   'Hello, world'
 end
+
+get '/events/' do	
+	doc = RestClient.get("#{DB}/#{params[]}")
+	@result = JSON.parse(doc)
+	haml :doc_id
+end
 	
 get '/events/:doc' do
-	DB = "#{ENV['CLOUDANT_URL']}/events"
+
 	doc = RestClient.get("#{DB}/#{params[:doc]}")
 	@result = JSON.parse(doc)
 	haml :doc_id
