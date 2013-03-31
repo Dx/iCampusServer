@@ -15,11 +15,12 @@ get '/events/' do
 	haml :doc_id
 end
 	
-get '/events/:doc' do
+get '/events/:country' do
 
-	doc = RestClient.get("#{DB}/#{params[:doc]}")
+	doc = RestClient.get("#{DB}/#{params[:country]}")
 	@result = JSON.parse(doc)
-	haml :doc_id
+	@result
+	# haml :doc_id
 end
 
 # get '/events/' do 
