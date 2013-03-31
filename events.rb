@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'rest_client'
 require 'json'
+require 'haml'
 
 DB = "#{ENV['CLOUDANT_URL']}/events"
 
