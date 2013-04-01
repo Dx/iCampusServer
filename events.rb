@@ -8,16 +8,23 @@ get '/' do
   'This is the iCampus REST API :)'
 end
 
-get '/events/' do	
-	doc = RestClient.get("#{DB}/_all_docs&include_docs=true")
-	@result = JSON.parse(doc)
-	@result
+get '/allevents/' do	
+	begin
+		doc = RestClient.get("#{DB}/_all_docs&include_docs=true")
+		@result = JSON.parse(doc)
+		@result
+	rescue => e
+        puts "iCampus exception #{e}!"
+	end
 end
 	
 get '/events/:country' do
-
-	doc = RestClient.get("#{DB}/#{params[:country]}")
-	@result = JSON.parse(doc)
-	@result
+	begin
+		doc = RestClient.get("#{DB}/#{params[:country]}")
+		@result = JSON.parse(doc)
+		@result
+	rescue => e
+        puts "iCampus exception #{e}!"
+	end
 end
 
