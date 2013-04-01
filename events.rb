@@ -9,7 +9,7 @@ get '/' do
 end
 
 get '/events/' do	
-	doc = RestClient.get("#{DB}/items")
+	doc = RestClient.get("#{DB}/_all_docs")
 	@result = JSON.parse(doc)
 	@result
 end
