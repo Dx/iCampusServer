@@ -5,11 +5,11 @@ require 'json'
 DB = "#{ENV['CLOUDANT_URL']}/events"
 
 get '/' do
-  'Hello, world'
+  'This is the iCampus REST API :)'
 end
 
 get '/events/' do	
-	doc = RestClient.get("#{DB}/_all_docs")
+	doc = RestClient.get("#{DB}/_all_docs&include_docs=true")
 	@result = JSON.parse(doc)
 	@result
 end
