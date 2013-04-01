@@ -14,7 +14,7 @@ get '/allevents/' do
 		@result = JSON.parse(doc)
 		@result
 	rescue => e
-        puts "iCampus exception #{e}!"
+        "iCampus exception #{e}!"
 	end
 end
 	
@@ -24,7 +24,7 @@ get '/events/:country' do
 		@result = JSON.parse(doc)
 		@result
 	rescue => e
-        puts "iCampus exception #{e}!"
+        "iCampus exception #{e}!"
 	end
 end
 
